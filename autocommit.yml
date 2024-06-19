@@ -3,7 +3,7 @@ name: Auto commit
 on:
   push:
     branches:
-      - master
+      - main
 
   schedule:
     - cron: "1 * * * *" # 每小时执行一次
@@ -51,5 +51,5 @@ jobs:
         uses: github-actions-x/commit@v2.6
         with:
           github-token: ${{ secrets.GH_TOKEN }}
-          push-branch: master
+          push-branch: main
           commit-message: "Auto commit"
