@@ -12,11 +12,13 @@ jobs:
   auto_commit:
     runs-on: ubuntu-latest
     steps:
-      - name: DEBUG
-        run: echo "::debug::Ref = ${{github.ref}}"
-
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           persist-credentials: false
           fetch-depth: 0
@@ -50,6 +52,6 @@ jobs:
       - name: GitHub Push
         uses: github-actions-x/commit@v2.6
         with:
-          github_token: ${{ secrets.GH_TOKEN }}
-          branch: master
-          commit_message: "Auto commit"
+          github-token: ${{ secrets.GH_TOKEN }}
+          push-branch: master
+          commit-message: "Auto commit"
