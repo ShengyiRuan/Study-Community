@@ -3,7 +3,7 @@ name: Auto commit
 on:
   push:
     branches:
-      - main
+      - master
 
   schedule:
     - cron: "1 * * * *" # 每小时执行一次
@@ -12,14 +12,13 @@ jobs:
   auto_commit:
     runs-on: ubuntu-latest
     steps:
-      - name: DEBUG
-        run: echo "::debug::Ref = ${{github.ref}}"
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
 
       - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-          fetch-depth: 0
+        uses: actions/checkout@v4  # 确保是最新版本
 
       - name: Modify last update
         run: |
@@ -51,5 +50,5 @@ jobs:
         uses: github-actions-x/commit@v2.6
         with:
           github-token: ${{ secrets.GH_TOKEN }}
-          push-branch: main
+          push-branch: master
           commit-message: "Auto commit"
