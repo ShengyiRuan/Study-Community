@@ -6,7 +6,7 @@ on:
       - master
 
   schedule:
-    - cron: "1 * * * *" # 每小时执行一次吗
+    - cron: "10 * * * *" # 每小时执行一次吗
 
 jobs:
   auto_commit:
