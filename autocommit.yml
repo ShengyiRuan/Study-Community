@@ -6,7 +6,7 @@ on:
       - master
 
   schedule:
-    - cron: "0 1 * * *" # 每天凌晨 1 点执行一次
+    - cron: "0 1 * * *" # 每天凌晨 1 点执行一次、
 
 jobs:
   auto_commit:
